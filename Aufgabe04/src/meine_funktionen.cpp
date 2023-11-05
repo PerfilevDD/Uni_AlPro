@@ -1,12 +1,9 @@
 #include <meine_funktionen.hpp>
-
 #include <iostream>
-
-using namespace std;
 
 
 // Die Funktionen ohne von Nutzer angegebene toleranzwert
-double sinus(double& x){
+double sinus(double x){
     /*Berechnung von Sinus*/
     double sinus = 0;
     double summand = x;
@@ -23,7 +20,7 @@ double sinus(double& x){
 
 
 // Die Funktionen mit von Nutzer angegebener toleranzwert
-double sinus(double& x, double& toleranzwert){
+double sinus(double x, double toleranzwert){
     /*Berechnung von Sinus*/
     double sinus = 0;
     double summand = x;
@@ -38,38 +35,76 @@ double sinus(double& x, double& toleranzwert){
 }
 
 
-// Cosinus
+// kosinus
 
 
 // Die Funktionen ohne von Nutzer angegebene toleranzwert
-double cosinus(double& x){
+double kosinus(double x){
     /*Berechnung von Kosinus*/
-    double cosinus = 0;
+    double kosinus = 0;
     double summand = 1;
     double zaehler_helfer = 1;
     double klein = 1e-30;
 
     while (summand > klein || -summand > klein){
-        cosinus += summand;
+        kosinus += summand;
         summand = -(x * x * summand) / ((zaehler_helfer+1)*(zaehler_helfer));
         zaehler_helfer +=2;
     }
-    return cosinus;
+    return kosinus;
 }
 
 
 
 // Die Funktionen mit von Nutzer angegebener toleranzwert
-double cosinus(double& x, double& toleranzwert){
+double kosinus(double x, double toleranzwert){
     /*Berechnung von Kosinus*/
-    double cosinus = 0;
+    double kosinus = 0;
     double summand = 1;
     double zaehler_helfer = 1;
 
     while (summand > toleranzwert || -summand > toleranzwert){
-        cosinus += summand;
+        kosinus += summand;
         summand = -(x * x * summand) / ((zaehler_helfer+1)*(zaehler_helfer));
         zaehler_helfer +=2;
     }
-    return cosinus;
+    return kosinus;
+}
+
+
+double tangens(double x){
+    double sinus_wert = sinus(x);
+    double kosinus_wert = kosinus(x);
+
+    if (kosinus_wert != 0){
+        return sinus_wert/kosinus_wert;
+    } else {return -1;}
+}
+
+double tangens(double x, double toleranzwert){
+    double sinus_wert = sinus(x, toleranzwert);
+    double kosinus_wert = kosinus(x, toleranzwert);
+
+    if (kosinus_wert != 0){
+        return sinus_wert/kosinus_wert;
+    } else {return -1;}
+}
+
+
+double kotangens(double x){
+    double sinus_wert = sinus(x);
+    double kosinus_wert = kosinus(x);
+
+    if (kosinus_wert != 0){
+        return sinus_wert/kosinus_wert;
+    } else {return -1;}
+}
+
+double kotangens(double x, double toleranzwert){
+    double sinus_wert = sinus(x, toleranzwert);
+    double kosinus_wert = kosinus(x, toleranzwert);
+
+    if (sinus_wert != 0){
+        return kosinus_wert/sinus_wert;
+    } else {return -1;}
 }
