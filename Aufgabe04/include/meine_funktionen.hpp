@@ -2,24 +2,22 @@
 #define __MEINE_FUNKTIONEN_HPP__
 
 
-// Gute Kommentare hinzufügen
 
+double sinus(double x); //deklariert die Funktion Sinus
 
-double sinus(double x);
+double sinus(double x, double toleranzwert); //deklariert die Überladung der Funktion Sinus
 
-double sinus(double x, double toleranzwert);
+double kosinus(double x); //deklariert die Funktion Kosinus
 
-double kosinus(double x);
+double kosinus(double x, double toleranzwert); //deklariert die Überladung der Funktion Kosinus
 
-double kosinus(double x, double toleranzwert);
+double tangens(double x); //deklariert die Funktion Tangens
 
-double tangens(double x);
+double tangens(double x, double toleranzwert); //deklariert die Überladung der Funktion Tangens
 
-double tangens(double x, double toleranzwert);
+double kotangens(double x); //deklariert die Funktion Kotangens
 
-double kotangens(double x);
-
-double kotangens(double x, double toleranzwert);
+double kotangens(double x, double toleranzwert); //deklariert die Überladung der Funktion Kotangens
 
 
 #endif
