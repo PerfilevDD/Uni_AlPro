@@ -19,4 +19,5 @@ double kotangens(double x); //deklariert die Funktion Kotangens
 
 double kotangens(double x, double toleranzwert); //deklariert die Überladung der Funktion Kotangens
 
+
 #endif
