@@ -25,6 +25,7 @@ void betrag(std::vector<int>& arr, const size_t& size){
     }
 }
 
+
 int main(void){
     std::vector<int> arr{5,-4,2,-1,4};
 
