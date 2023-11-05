@@ -33,7 +33,7 @@ void drucke_str(const std::vector<std::string>& arr, const size_t& size){
 
     // Drucken jeder Element
     for(int i = 0; i < size; i++){
-        std::cout << arr[i] << " ";
+        std::cout << arr[i] << std::endl;
     }
     std::cout << std::endl; // \n am Ende
 }
@@ -44,8 +44,8 @@ int main(void){
 
 
     drucke_int(arr, arr.size()); // Teil 1
-
+    std::cout << std::endl;
     betrag(arr, arr.size()); // Teil 2
-
+    std::cout << std::endl;
     drucke_str(str_arr, str_arr.size()); // Teil 3
 }
