@@ -72,6 +72,10 @@ double kosinus(double x, double toleranzwert){
 }
 
 
+// Tangens
+
+
+// Die Funktionen ohne von Nutzer angegebene toleranzwert
 double tangens(double x){
     double sinus_wert = sinus(x);
     double kosinus_wert = kosinus(x);
@@ -81,6 +85,7 @@ double tangens(double x){
     } else {return -1;}
 }
 
+// Die Funktionen mit von Nutzer angegebener toleranzwert
 double tangens(double x, double toleranzwert){
     double sinus_wert = sinus(x, toleranzwert);
     double kosinus_wert = kosinus(x, toleranzwert);
@@ -90,7 +95,10 @@ double tangens(double x, double toleranzwert){
     } else {return -1;}
 }
 
+// Kotangens
 
+
+// Die Funktionen ohne von Nutzer angegebene toleranzwert
 double kotangens(double x){
     double sinus_wert = sinus(x);
     double kosinus_wert = kosinus(x);
@@ -100,6 +108,7 @@ double kotangens(double x){
     } else {return -1;}
 }
 
+// Die Funktionen mit von Nutzer angegebener toleranzwert
 double kotangens(double x, double toleranzwert){
     double sinus_wert = sinus(x, toleranzwert);
     double kosinus_wert = kosinus(x, toleranzwert);

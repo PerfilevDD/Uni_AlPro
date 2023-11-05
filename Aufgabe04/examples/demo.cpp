@@ -17,23 +17,17 @@ int main() {
     cout << "Genauigkeit: ";
     cin >> genauigkeit;
 
-    double sin_zahl = sinus(zahl, genauigkeit);
-    double cos_zahl = kosinus(zahl, genauigkeit);
-
-    cout << "Sinus von Grad " << grad << " ist gleich " << sin_zahl << endl;
-    cout << "Cosinus von Grad " << grad << " ist gleich " << cos_zahl << endl;
+    cout << "Sinus von Grad " << grad << " ist gleich " << sinus(zahl, genauigkeit) << endl;
+    cout << "Cosinus von Grad " << grad << " ist gleich " << kosinus(zahl, genauigkeit) << endl;
 
     // Pruefen ob kosinus nicht null ist, falls Kosinus null ist,\
     // Dann exestiert kein Tangens
-    if (cos_zahl != 0){
-        cout << "Tangens von Grad " << grad << " ist gleich " << sin_zahl/cos_zahl << endl;
-    }
+    cout << "Tangens von Grad " << grad << " ist gleich " << tangens(zahl, genauigkeit) << endl;
+
 
     // Pruefen ob sinus nicht null ist, falls sinus null ist,\
     // Dann exestiert kein Kotangens
-    if (sin_zahl != 0){
-        cout << "Kotangens von Grad " << grad << " ist gleich " << cos_zahl/sin_zahl << endl;
-    }
+    cout << "Kotangens von Grad " << grad << " ist gleich " << kotangens(zahl, genauigkeit) << endl;
 
     return 0;
 }
