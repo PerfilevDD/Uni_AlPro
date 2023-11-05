@@ -5,6 +5,7 @@ using namespace std;
 
 int main() {
 
+    // TODO
     int grad;
     double zahl;
     double genauigkeit;
