@@ -7,8 +7,8 @@ void drucke_int(const std::vector<int>& arr, const size_t& size){
     // Sie ist const, da sie nicht veraendern wird
 
     // Drucken jeder Element
-    for(int i = 0; i < size; i++){
-        std::cout << arr[i] << " ";
+    for(const int& zahl: arr){ //Range-Based For-Loop
+        std::cout << zahl << " ";
     }
     std::cout << std::endl; // \n am Ende
 }
@@ -18,9 +18,9 @@ void betrag(std::vector<int>& arr, const size_t& size){
     // Arr nicht const, da sie veraendern wird
 
     // Drucken jeder Element
-    for(int i = 0; i < size; i++){
-        if (arr[i] < 0){
-            arr[i] = -1 * arr[i];
+    for(int& zahl : arr){ //Range-Based For-Loop
+        if (zahl < 0){
+            zahl = -1 * zahl;
         }
     }
 
@@ -32,8 +32,8 @@ void drucke_str(const std::vector<std::string>& arr, const size_t& size){
     // Sie ist const, da sie nicht veraendern wird
 
     // Drucken jeder Element
-    for(int i = 0; i < size; i++){
-        std::cout << arr[i] << std::endl;
+    for(const std::string& wort : arr){ //Range-Based For-Loop
+        std::cout << wort << std::endl;
     }
     std::cout << std::endl; // \n am Ende
 }
