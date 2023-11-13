@@ -1,0 +1,27 @@
+image: registry.cs.uni-bonn.de:5005/lehretool/cppreferencecontainer:main
+
+stages:
+  - test_compile
+
+aufgabe_01:
+  stage: test_compile
+  script:
+    - cd uebungscode_06
+    - cmake -S . -B build
+    - cmake --build build --target aufg1
+
+
+aufgabe_02:
+  stage: test_compile
+  script:
+    - cd uebungscode_06
+    - cmake -S . -B build
+    - cmake --build build --target aufg2
+
+
+aufgabe_03:
+  stage: test_compile
+  script:
+    - cd uebungscode_06
+    - cmake -S . -B build
+    - cmake --build build --target aufg3
