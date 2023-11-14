@@ -30,7 +30,8 @@ void minsort (std::vector<int>& arr){
     std::vector<int> mins (2); // An array for swap
 
     for (int i = 0; i < arr.size(); i++){
-        mins = min_arr(arr, i);
+        mins = min_arr(arr, i); // An array from function min_arr, receives min of arr and index of min
+        
         if (arr[i] != mins[0]){
             temp = arr[i];
             arr[i] = mins[0];
