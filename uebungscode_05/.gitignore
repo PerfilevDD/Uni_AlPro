@@ -1,5 +1,1 @@
-
-
-# But not these files...
-!.gitignore
-!.vscode
+./vscode
