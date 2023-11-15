@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 #include <algorithm>
 
@@ -38,17 +39,30 @@ namespace hanoi
 
     void Hanoi::drucke() const
     {
+        int temp = 1;
         for (int i = 0; i < anz_scheiben; i++)
         {
-            //std::cout << stapel[0][i] << stapel[1][i] << stapel[2][i] << std::endl;
-            for (int pr0 = 0; pr0 < stapel[0][i]; pr0++){
-                std::cout << "--";
+            // std::cout << stapel[0][i] << stapel[1][i] << stapel[2][i] << std::endl;
+
+            temp = 1;
+            temp = stapel[0][i] - temp;
+            for (int pr0 = temp; pr0 <= stapel[0][i]; pr0++)
+            {
+                std::cout << std::string(pr0, '-');
             }
-            for (int pr1 = 0; pr1 < stapel[1][i]; pr1++){
-                std::cout << "--";
+
+            temp = 1;
+            temp = stapel[1][i] - temp;
+            for (int pr1 = temp; pr1 <= stapel[1][i]; pr1++)
+            {
+                std::cout << std::string(pr1, 's');
             }
-            for (int pr2 = 0; pr2 < stapel[2][i]; pr2++){
-                std::cout << "--";
+
+            temp = 1;
+            temp = stapel[2][i] - temp;
+            for (int pr2 = temp; pr2 <= stapel[2][i]; pr2++)
+            {
+                std::cout << std::string(pr2, 'c');
             }
             std::cout << std::endl;
         }
