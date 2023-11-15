@@ -42,13 +42,13 @@ namespace hanoi
         {
             //std::cout << stapel[0][i] << stapel[1][i] << stapel[2][i] << std::endl;
             for (int pr0 = 0; pr0 < stapel[0][i]; pr0++){
-                std::cout << "s";
+                std::cout << "--";
             }
             for (int pr1 = 0; pr1 < stapel[1][i]; pr1++){
-                std::cout << "h";
+                std::cout << "--";
             }
             for (int pr2 = 0; pr2 < stapel[2][i]; pr2++){
-                std::cout << "f";
+                std::cout << "--";
             }
             std::cout << std::endl;
         }
