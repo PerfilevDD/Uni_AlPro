@@ -59,24 +59,6 @@ namespace hanoi
             }
         }
         return false;
-
-        /*if (!stapel[von].empty())
-        {
-            auto min_el = *std::min_element(stapel[von].begin(), stapel[von].end());
-
-            auto index_min = std::find(stapel[von].begin(), stapel[von].end(), min_el);
-
-            stapel[nach].push_back(min_el);
-
-            std::cout << std::distance(stapel[von].begin(), index_min) << std::endl;
-            stapel[von][std::distance(stapel[von].begin(), index_min)] = 0;
-
-            for (auto &x : stapel[von])
-            {
-                std::cout << "s" << x << std::endl;
-            }
-        }
-        return false;*/
     }
 
     void Hanoi::drucke() const
@@ -91,6 +73,27 @@ namespace hanoi
             std::cout << std::endl;
         }
         std::cout << std::endl;
+
+        if (!stapel[0].empty())
+        {
+            std::reverse(stapel[0].begin(), stapel[0].end());
+        }
+        if (!stapel[1].empty())
+        {
+            std::reverse(stapel[1].begin(), stapel[1].end());
+        }
+        if (!stapel[2].empty())
+        {
+            std::reverse(stapel[2].begin(), stapel[2].end());
+        }
+
+        for (int i = 1; i <= anz_scheiben; i++)
+        {
+            if (!stapel[0].empty())
+            {
+                std::cout << std::string(stapel[0][i - 1], '-') << std::string(stapel[0][i - 1], '-');
+            }
+        }
     }
     /*
  for (int i = 1; i <= anz_scheiben; i++)
