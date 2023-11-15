@@ -3,8 +3,8 @@
 #include <hanoi/hanoi.hpp>
 
 int main(int, char**) {
-  // hanoi::Hanoi h(5);
-  // h.drucke();
+  hanoi::Hanoi h(3);
+  h.drucke();
   // 
   // h.bewege(0,1);
   // h.bewege(0,1); // Illegale Bewegung

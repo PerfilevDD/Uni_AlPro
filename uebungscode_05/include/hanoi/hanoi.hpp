@@ -19,8 +19,9 @@ namespace hanoi
     // Druckt die aktuelle Konfiguration auf der Konsole aus
     void drucke() const;
 
-  private:
+  //private:
     // Wir haben drei Stapel. Also bietet sich ein Array von Zahlenarrays an.
     std::vector<std::vector<size_t>> stapel;
+    int anz_scheiben;
   };
 }
