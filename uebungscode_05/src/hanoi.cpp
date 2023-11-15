@@ -40,17 +40,46 @@ namespace hanoi
     void Hanoi::drucke() const
     {
         int temp = 1;
-        for (int i = 0; i < anz_scheiben; i++)
+        for (int i = 1; i <= anz_scheiben; i++)
         {
             // std::cout << stapel[0][i] << stapel[1][i] << stapel[2][i] << std::endl;
 
-            temp = 1;
-            temp = stapel[0][i] - temp;
-            for (int pr0 = temp; pr0 <= stapel[0][i]; pr0++)
-            {
-                std::cout << std::string(pr0, '-');
+            // Stafel 1
+            if (i != stapel[0].size()){
+                std::cout << std::string(stapel[0][stapel[0].size()-1-i], ' ');
             }
 
+            std::cout << std::string(stapel[0][i-1], '-') << std::string(stapel[0][i-1], '-');
+
+            if (i != stapel[0].size()){
+                std::cout << std::string(stapel[0][stapel[0].size()-1-i], ' ');
+            }
+
+
+
+            // Stafel 2
+            if (i != stapel[1].size()){
+                std::cout << std::string(stapel[1][stapel[1].size()-1-i], ' ');
+            }
+
+            std::cout << std::string(stapel[1][i-1], '-') << std::string(stapel[1][i-1], '-');
+
+            if (i != stapel[1].size()){
+                std::cout << std::string(stapel[1][stapel[1].size()-1-i], ' ');
+            }
+
+
+            // Stafel 3
+            if (i != stapel[2].size()){
+                std::cout << std::string(stapel[2][stapel[2].size()-1-i], ' ');
+            }
+
+            std::cout << std::string(stapel[2][i-1], '-') << std::string(stapel[2][i-1], '-');
+
+            if (i != stapel[2].size()){
+                std::cout << std::string(stapel[2][stapel[2].size()-1-i], ' ');
+            }
+/*
             temp = 1;
             temp = stapel[1][i] - temp;
             for (int pr1 = temp; pr1 <= stapel[1][i]; pr1++)
@@ -63,7 +92,7 @@ namespace hanoi
             for (int pr2 = temp; pr2 <= stapel[2][i]; pr2++)
             {
                 std::cout << std::string(pr2, 'c');
-            }
+            }*/
             std::cout << std::endl;
         }
         /* for (auto &ein_stapel : Hanoi::stapel)
