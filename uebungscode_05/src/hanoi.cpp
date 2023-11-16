@@ -63,6 +63,7 @@ namespace hanoi
 
     void Hanoi::drucke() const
     {
+        // std::cout << anz_scheiben << std::endl;
         for (auto &ein_stapel : stapel)
         {
             std::cout << "Stapel ";
@@ -74,113 +75,29 @@ namespace hanoi
         }
         std::cout << std::endl;
 
-        if (!stapel[0].empty())
+        for (size_t ebene = anz_scheiben; ebene > 0; --ebene) // Von oben nach unten jede Ebene durchgehen
         {
-            std::reverse(stapel[0].begin(), stapel[0].end());
-        }
-        if (!stapel[1].empty())
-        {
-            std::reverse(stapel[1].begin(), stapel[1].end());
-        }
-        if (!stapel[2].empty())
-        {
-            std::reverse(stapel[2].begin(), stapel[2].end());
-        }
-
-        for (int i = 1; i <= anz_scheiben; i++)
-        {
-            if (!stapel[0].empty())
+            for (size_t stapel_index = 0; stapel_index < 3; ++stapel_index) // Jeden Stapel durchgehen
             {
-                std::cout << std::string(stapel[0][i - 1], '-') << std::string(stapel[0][i - 1], '-');
+                if (ebene <= stapel[stapel_index].size()) // Wenn der Stapel auf dieser Ebene ein Element hat
+                {
+                    size_t scheibe = stapel[stapel_index][ebene - 1];
+                    std::cout << std::string(anz_scheiben - scheibe, ' '); // Leerzeichen vor der Scheibe
+                    std::cout << std::string(2 * scheibe, '-');            // Die Scheibe selbst
+                    std::cout << std::string(anz_scheiben - scheibe, ' '); // Leerzeichen nach der Scheibe
+                }
+                else
+                {
+                    // Drucke Leerzeichen, wenn kein Element vorhanden ist
+                    std::cout << std::string(2 * anz_scheiben, ' ');
+                }
+                std::cout << "   "; // Abstand zwischen den Stapeln
             }
+            std::cout << std::endl;
         }
+
+        // Abschließende Zeile für Stapel-Basis
+        std::cout << std::string(anz_scheiben * 6 + 10, '=') << std::endl;
     }
-    /*
- for (int i = 1; i <= anz_scheiben; i++)
- {
-     // Stapel 1
-     if (i != stapel[0].size())
-     {
-         int countdown = 0;
-         int adresse = stapel[0].size() - 1 - i;
-
-         for (int j = 0; j < stapel[0].size(); j++)
-         {
-             if (stapel[0][j] == 0)
-             {
-                 countdown++;
-             }
-         }
-         std::cout << std::string(stapel[0][adresse], ' ') << std::string(countdown, ' ');
-     }
-
-     std::cout << std::string(stapel[0][i - 1], '-') << std::string(stapel[0][i - 1], '-');
-
-     if (i != stapel[0].size())
-     {
-         std::cout << std::string(stapel[0][stapel[0].size() - 1 - i], ' ')
-                   << std::string(1, ' ');
-     }
-     else
-     {
-         std::cout << std::string(1, ' ');
-     }
-
-     // Stapel 2
-     if (!stapel[1].empty())
-     {
-         if (i != stapel[1].size() & stapel[1].size() == *std::max_element(stapel[1].begin(), stapel[1].end()))
-         {
-             std::cout << std::string(stapel[1][stapel[1].size() - 1 - i], ' ');
-         }
-         else if (i != stapel[1].size() & stapel[1].size() != *std::max_element(stapel[1].begin(), stapel[1].end()))
-         {
-             std::cout << std::string(stapel[1][stapel[1].size() - 1 - i], ' ')
-                       << std::string(1, ' ');
-         }
-
-         std::cout << std::string(stapel[1][i - 1], '-') << std::string(stapel[1][i - 1], '-');
-
-
-         if (i != stapel[1].size())
-         {
-             std::cout << std::string(stapel[1][stapel[1].size() - 1 - i], ' ')
-                       << std::string(1, ' ');
-         }
-         else
-         {
-             std::cout << std::string(1, ' ');
-         }
-     }
-
-                 // Stapel 3
-
-                 if (!stapel[1].empty())
-                 {
-                     if (i != stapel[2].size() & stapel[2].size() == *std::max_element(stapel[2].begin(), stapel[2].end()))
-                     {
-                         std::cout << std::string(stapel[2][stapel[1].size() - 1 - i], ' ');
-                     }
-                     else if (i != stapel[2].size() & stapel[2].size() != *std::max_element(stapel[2].begin(), stapel[2].end()))
-                     {
-                         std::cout << std::string(stapel[2][stapel[2].size() - 1 - i], ' ')
-                                   << std::string(1, ' ');
-                     }
-
-                     std::cout << std::string(stapel[2][i - 1], '-') << std::string(stapel[2][i - 1], '-');
-
-                     if (i != stapel[2].size())
-                     {
-                         std::cout << std::string(stapel[2][stapel[1].size() - 1 - i], ' ')
-                                   << std::string(1, ' ');
-                     }
-                     else
-                     {
-                         std::cout << std::string(1, ' ');
-                     }
-                 }
-std::cout << std::endl;
-}
-*/
 
 }
