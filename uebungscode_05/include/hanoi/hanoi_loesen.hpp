@@ -15,7 +15,7 @@ namespace hanoi_loesen
     // Verschiebt die oberste Scheibe (falls erlaubt) und gibt true zurück
     // genau dann wenn die Bewegung erlaubt war
     bool bewege(size_t von, size_t nach);
-
+    void scheibe_in_stapel(std::vector<size_t>& stapel_von, std::vector<size_t>& stapel_nach);
     bool bewege_rekursiv(size_t anz, size_t von, size_t nach, size_t buf);
 
     // Druckt die aktuelle Konfiguration auf der Konsole aus
