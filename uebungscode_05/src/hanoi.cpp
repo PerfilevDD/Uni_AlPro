@@ -25,24 +25,26 @@ namespace hanoi
 
     bool Hanoi::bewege(size_t von, size_t nach)
     {
-        if (von >= 0 && von <= 2 && nach >= 0 && nach <= 2)
+        // Bewegung Funktion
+
+        if (von >= 0 && von <= 2 && nach >= 0 && nach <= 2) // Ueberpruefung ob weg ist erlaubt
         {
-            if (!stapel[von].empty())
+            if (!stapel[von].empty())// Ueberpruefung ob weg ist erlaubt
             {
-                if (stapel[nach].empty() || stapel[von].back() < stapel[nach].back())
+                if (stapel[nach].empty() || stapel[von].back() < stapel[nach].back()) // Ueberpruefung ob weg ist erlaubt
                 {
-                    stapel[nach].push_back(stapel[von].back());
-                    stapel[von].pop_back();
+                    stapel[nach].push_back(stapel[von].back()); // Addieren Scheibel in Stapel
+                    stapel[von].pop_back(); // Entfernen Scheibel aud dem Stapel
                     return true;
                 }
             }
         }
-        return false;
+        return false; // Die Scheibe wurde nicht bewegt
     }
 
     void Hanoi::drucke() const
     {
-        // std::cout << anz_scheiben << std::endl;
+        // Print aktuelle Stapeln
         for (auto &ein_stapel : stapel)
         {
             std::cout << "Stapel ";
