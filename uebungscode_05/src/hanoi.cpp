@@ -21,27 +21,6 @@ namespace hanoi
             x = i;
             i--;
         }
-
-        /*// DELETE
-        stapel[1] = std::vector<size_t>(anz);
-        i = anz;
-        for (auto &x : stapel[1])
-        {
-            x = i;
-            i--;
-        }
-        stapel[2] = std::vector<size_t>(anz);
-        i = anz;
-        for (auto &x : stapel[2])
-        {
-            x = i;
-            i--;
-        }*/
-
-        // Reverse an Array
-        // std::reverse(stapel[0].begin(), stapel[0].end());
-        // std::reverse(stapel[1].begin(), stapel[1].end());
-        // std::reverse(stapel[2].begin(), stapel[2].end());
     }
 
     bool Hanoi::bewege(size_t von, size_t nach)
