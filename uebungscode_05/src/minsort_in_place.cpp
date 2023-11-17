@@ -14,6 +14,7 @@ void minsort_in_place(std::vector<int>& array) {
             }
         }
 
+    // Heir werden Elemente in einem array getauscht
          int temp = array[i]; // in temp wird Element aus der Position i gespeichert
             array[i] = array[min]; // Element aus der Position i wird durch das kleinste Element (j) ersetzt
             array[min] = temp; // Element aus der Position j wird durch temp ersetzt (also Wert von i) 
