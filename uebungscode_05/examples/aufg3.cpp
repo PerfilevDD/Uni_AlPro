@@ -4,6 +4,12 @@
 #include <hanoi/hanoi_loesen.hpp>
 
 int main(int, char**) {
-  hanoi_loesen::Hanoi_loesen h(3);
-  h.bewege_rekursiv(3,0,1,2);
+  size_t scheibe;
+
+  std::cout << "Anzahl von Scheiben -> ";
+  std::cin >> scheibe;
+
+  hanoi_loesen::Hanoi_loesen h(scheibe);
+
+  h.bewege_rekursiv(scheibe,0,2,1); // Ruf Rekursion auf
 }
