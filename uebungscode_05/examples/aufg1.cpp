@@ -33,6 +33,6 @@ int main() {
   fuelle_zufaellig(bsp_zahlen);
   drucke_array(bsp_zahlen);
   std::cout << std::endl << std::endl << std::endl;
-  minsort_in_place(bsp_zahlen);
-  drucke_array(bsp_zahlen);
+  minsort_in_place(bsp_zahlen); //Funktion wird aufgerufen
+  drucke_array(bsp_zahlen); // und Array wird gedruckt
 }
