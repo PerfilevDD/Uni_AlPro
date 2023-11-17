@@ -16,6 +16,7 @@ namespace hanoi
         stapel[0] = std::vector<size_t>(anz);
         anz_scheiben = anz;
         size_t i = anz;
+        // Addiert die Scheibe in Stapel 0
         for (auto &x : stapel[0])
         {
             x = i;
