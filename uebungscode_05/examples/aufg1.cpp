@@ -32,5 +32,8 @@ int main() {
   std::vector<int> bsp_zahlen(4000);
   fuelle_zufaellig(bsp_zahlen);
   drucke_array(bsp_zahlen);
+  std::cout << std::endl << std::endl;
+  minsort(bsp_zahlen);
+  drucke_array(bsp_zahlen);
   
 }
