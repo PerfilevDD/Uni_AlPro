@@ -18,8 +18,8 @@ std::vector<int> mergesort(std::vector<int>& arr)
     if (arr_size > 1)
     {
         int middle = arr_size / 2;
-        std::vector<int> left_arr = elminarr(arr, 0, middle);
-        std::vector<int> right_arr = elminarr(arr, middle, arr_size);
+        std::vector<int> left_arr = elminarr(arr, 0, arr_size);
+        std::vector<int> right_arr = elminarr(arr, arr_size, middle);
         left_arr = mergesort(left_arr);
         right_arr = mergesort(right_arr);
 
