@@ -12,53 +12,53 @@ std::vector<int> elminarr(const std::vector<int>& arr, const int& start, const i
     return ret_arr;
 }
 
-std::vector<int> mergesort(std::vector<int>& A)
+std::vector<int> mergesort(std::vector<int>& arr)
 {
-    int k = A.size();
-    if (k > 1)
+    int arr_size = arr.size();
+    if (arr_size > 1)
     {
-        int t = k / 2;
-        std::vector<int> L = elminarr(A, 0, t);
-        std::vector<int> R = elminarr(A, t, k);
-        L = mergesort(L);
-        R = mergesort(R);
+        int middle = arr_size / 2;
+        std::vector<int> left_arr = elminarr(arr, 0, arr_size);
+        std::vector<int> right_arr = elminarr(arr, arr_size, middle);
+        left_arr = mergesort(left_arr);
+        right_arr = mergesort(right_arr);
 
-        return merge(L, R);
+        return merge(left_arr, right_arr);
     }
     else
     {
-        return A;
+        return arr;
     }
 }
 
-std::vector<int> merge(std::vector<int>& L, std::vector<int>& R)
+std::vector<int> merge(std::vector<int>& left_arr, std::vector<int>& right_arr)
 {
-    std::vector<int> Y(L.size() + R.size());
+    std::vector<int> merge_arr(left_arr.size() + right_arr.size());
     int i = 0;
     int j = 0;
-    //std::cout << i << std::endl;
-    while (i < L.size() && j < R.size())
+    
+    while (i < left_arr.size() && j < right_arr.size())
     {
-        if (L[i] <= R[j])
+        if (left_arr[i] <= right_arr[j])
         {
-            Y[i + j] = L[i];
+            merge_arr[i + j] = left_arr[i];
             i++;
         }
         else
         {
-            Y[i + j] = R[j];
+            merge_arr[i + j] = right_arr[j];
             j++;
         }
     }
-    while (i < L.size())
+    while (i < left_arr.size())
     {
-        Y[i + j] = L[i];
+        merge_arr[i + j] = left_arr[i];
         i++;
     }
-    while (j < R.size())
+    while (j < right_arr.size())
     {
-        Y[i + j] = R[j];
+        merge_arr[i + j] = right_arr[j];
         j++;
     }
-    return Y;
+    return merge_arr;
 }
