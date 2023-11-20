@@ -2,6 +2,7 @@
 #include <misc/schnellsort.hpp>
 #include <misc/hilfsfunktionen.hpp>
 #include <mergesort.hpp>
+#include <minsort_in_place.hpp>
 #include <iostream>
 #include <algorithm>
 
@@ -27,6 +28,21 @@ int messen_merge(const int& zahlen){
 
   zm.start();
   mergesort(bsp_zahlen);
+  zm.stop();
+  return zm.get_microseconds();
+
+}
+
+int minsort(const int& zahlen){
+
+  misc::Zeitmesser zm;
+
+  std::vector<int> bsp_zahlen(zahlen);
+  misc::fuelle_zufaellig(bsp_zahlen);
+
+
+  zm.start();
+  minsort(bsp_zahlen);
   zm.stop();
   return zm.get_microseconds();
 
