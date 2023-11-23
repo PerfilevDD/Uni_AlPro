@@ -13,8 +13,8 @@ int main() {
 
     misc::Zeitmesser zeit;
 
-          /* For Schleife die zuerst bei 10 Elementen in einem Array starten und dann die Anzahl der
-             Elemente um 10000 pro Schritt erhöht bis es die Maximale Größe 30010 erreicht */
+          /* For Schleife die zuerst bei 10 Elementen in einem Array startet und dann die Anzahl der
+          Elemente um 10000 pro Schritt erhöht bis es die Maximale Größe von 30010 Elementen erreicht */
     for (int i = start; i <= max; i = i + schritt) { 
         std::vector<int> bsp_zahlen1(i);
         std::vector<int> bsp_zahlen2(i);
