@@ -46,3 +46,21 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// clang++ -std=c++17 -I./include src/hilfsfunktionen.cpp src/schnellsort.cpp src/zeitmesser.cpp src/mergesort.cpp src/minsort.cpp examples/aufg2.cpp -o build/aufg2
