@@ -57,8 +57,8 @@ void druecken(std::vector<int>& arr){
 
 int main()
 {
-  int zahlen = 10000;
-  int schritt = 10;
+  int zahlen = 1000000;
+  int schritt = 5;
 
   // Vektoren um die Zeit eines Algorithmus zu speichern
   std::vector<int> schnell_zeiten, merge_zeiten, minsort_zeiten, alle_zahlen;
