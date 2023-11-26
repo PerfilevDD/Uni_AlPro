@@ -15,6 +15,11 @@ int main()
   sg.new_knoten(1, 2); // Erstellen eine Verbindung zwischen den Knoten
   sg.new_knoten(1, 3); // Erstellen eine Verbindung zwischen den Knoten
 
+
+  /*sg.new_knoten(1, 0); // Erstellen eine Verbindung zwischen den Knoten
+  sg.new_knoten(2, 1); // Erstellen eine Verbindung zwischen den Knoten
+  sg.new_knoten(3, 1); // Erstellen eine Verbindung zwischen den Knoten*/
+
   sg.BreitenSuche(0);
 
   sg.drucken(); // Drucken die Knoten mit der Verbindung
