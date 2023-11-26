@@ -28,7 +28,7 @@ namespace SimplerGraph
         }
     }
 
-    bool check_knoten(std::vector<size_t> &arr, const size_t &j)
+    bool SimplerGraph::check_knoten(std::vector<size_t> &arr, const size_t &j)
     {
         for (const auto &unerk_knoten : arr)
         {
@@ -42,8 +42,8 @@ namespace SimplerGraph
 
     void SimplerGraph::BreitenSuche(const size_t &s)
     {
+        // TODO: Überprufen auf s; kommentare; print
         std::queue<size_t> queue;
-        std::vector<size_t> folge;
         queue.push(s);
         while (!queue.empty())
         {
@@ -53,11 +53,15 @@ namespace SimplerGraph
             {
                 if (matrix[v][j])
                 {
-                    if (!check_knoten(folge, j))
+                    // Prufen, damit nur unterer Teil der Graph ausgedruckt wuerde
+                    if (j > s)
                     {
-                        std::cout << j << std::endl;
-                        folge.push_back(j);
-                        queue.push(j);
+                        if (!check_knoten(folge, j))
+                        {
+                            std::cout << j << std::endl;
+                            folge.push_back(j);
+                            queue.push(j);
+                        }
                     }
                 }
             }
@@ -68,38 +72,6 @@ namespace SimplerGraph
         }
         std::cout << std::endl;
     }
-
-    /*void SimplerGraph::BreitenSuche(const size_t &s)
-        {
-            std::queue<size_t> queue;
-            std::vector<size_t> folge;
-            queue.push(s);
-            folge.push_back(s);
-            while (!queue.empty())
-            {
-                int v = queue.front();
-                queue.pop();
-                for (size_t i = v; i < knoten_anz; i++)
-                {
-                    for (size_t j = 0; j < knoten_anz; j++)
-                    {
-                        if (matrix[i][j])
-                        {
-                            if (!check_knoten(folge, j))
-                            {
-                                std::cout << j << std::endl;
-                                folge.push_back(j);
-                                queue.push(j);
-                            }
-                        }
-                    }
-                }
-            }
-            for (const auto &knoten : folge){
-                std::cout << knoten << " ";
-            }
-            std::cout << std::endl;
-        }*/
 
     void SimplerGraph::drucken()
     {
