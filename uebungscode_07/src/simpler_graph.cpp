@@ -66,9 +66,15 @@ namespace SimplerGraph {
         std::cout << std::endl;
     }
 
-
-    void SimplerGraph::TiefenSuche(const size_t &s){
-
+    void SimplerGraph::TiefenSuche(const size_t &s) {
+        folge.push_back(s);
+        for (int i = 0; i < knoten_anz; i++) {
+            if (matrix[s][i]) {
+                if (!check_knoten(folge, i)) {
+                    TiefenSuche(i);
+                }
+            }
+        }
     }
 
     void SimplerGraph::drucken() {
@@ -84,4 +90,4 @@ namespace SimplerGraph {
             }
         }
     }
-}
+}  // namespace SimplerGraph
