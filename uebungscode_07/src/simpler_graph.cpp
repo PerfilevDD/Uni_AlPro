@@ -39,6 +39,7 @@ namespace SimplerGraph {
     }
 
     void SimplerGraph::BreitenSuche(const size_t &s) {
+        // BreitenSuche-Funktion
         std::queue<size_t> queue;
 
         // Pruefen falls der Startknoten exestiert im Array aller Knoten
@@ -66,9 +67,13 @@ namespace SimplerGraph {
     }
 
     void SimplerGraph::TiefenSuche(const size_t &s) {
+        // TiefenSuche-Funktion
         folge.push_back(s); // Hier etwas mit Suchelement machen
+        // Gehen die Knoten durch
         for (int i = 0; i < knoten_anz; i++) {
+            // Pruefen, falls eine Kante exestiert
             if (matrix[s][i]) {
+                // Pruefen falls der Knoten bereits besucht war
                 if (!check_knoten(folge, i)) {
                     TiefenSuche(i);
                 }
@@ -82,7 +87,7 @@ namespace SimplerGraph {
         // Gehen Array durch
         for (int i = 0; i < knoten_anz; i++) {
             for (int j = 0; j < knoten_anz; j++) {
-                if (matrix[i][j] == true) {
+                if (matrix[i][j]) {
                     // Falls eine Verbindung zwischen den Knoten exestiert, druecken sie aus
                     std::cout << "(" << i << " -> " << j << ")" << std::endl;
                 }
