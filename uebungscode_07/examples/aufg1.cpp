@@ -7,24 +7,22 @@
 #include <vector>  // Stellt dynamische Arrays zur Verfügung
 
 int main() {
-    // ...
-
     SimplerGraph::SimplerGraph sg(4);  // Inizialisieren Graphen und geben die Anzahl der Knoten
 
     bool is_gerichtet = true;
 
-    sg.neue_kante(0, 1, is_gerichtet);  // Erstellen eine Verbindung zwischen den Knoten
-    sg.neue_kante(1, 2, is_gerichtet);  // Erstellen eine Verbindung zwischen den Knoten
-    sg.neue_kante(1, 3, is_gerichtet);                // Erstellen eine Verbindung zwischen den Knoten
+    // Initialisieren Kanten
+    sg.neue_kante(0, 1, is_gerichtet);
+    sg.neue_kante(1, 2, is_gerichtet);
+    sg.neue_kante(1, 3, is_gerichtet);
 
-    /*sg.new_knoten(1, 0); // Erstellen eine Verbindung zwischen den Knoten
-    sg.new_knoten(2, 1); // Erstellen eine Verbindung zwischen den Knoten
-    sg.new_knoten(3, 1); // Erstellen eine Verbindung zwischen den Knoten*/
-
+    // Rufen BreitenScuhe-Funktin aus
     sg.BreitenSuche(0);
 
+    fmt::print("Alle Kanten, die exestieren\n");
     sg.drucken();  // Drucken die Knoten mit der Verbindung
 
     // Nutzen Sie die {fmt}-Library um das Array auszugeben
-    fmt::print("HIER DAS ARRAY WIE AUSGEBEN\n");
+    fmt::print("Resultät von Breitensuche von {0}\n", 0);
+    fmt::print("{}\n", fmt::join(sg.folge, " -> "));
 }
