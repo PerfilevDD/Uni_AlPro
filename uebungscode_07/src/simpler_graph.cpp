@@ -63,11 +63,6 @@ namespace SimplerGraph {
                 }
             }
         }
-        // DEL
-        for (const auto &knoten : folge) {
-            std::cout << knoten << " ";
-        }
-        std::cout << std::endl;
     }
 
     void SimplerGraph::TiefenSuche(const size_t &s) {
@@ -93,5 +88,6 @@ namespace SimplerGraph {
                 }
             }
         }
+        std::cout << std::endl;
     }
 }  // namespace SimplerGraph
