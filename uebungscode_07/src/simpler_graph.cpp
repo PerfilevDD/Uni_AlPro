@@ -9,18 +9,22 @@ namespace SimplerGraph {
         // Erstellen eine Klasse mit gegebener Zahl der Anzahl der Knoten
     }
 
-    void SimplerGraph::neue_kante(const size_t &num1, const size_t &num2) {
+    void SimplerGraph::neue_kante(const size_t &num1, const size_t &num2, const bool &is_gerichtet) {
         // Erstellen neue Knoten
-        if (num1 >= 0 && num1 < knoten_anz && num2 >= 0 && num2 < knoten_anz)
-
-        {
+        if (num1 >= 0 && num1 < knoten_anz && num2 >= 0 && num2 < knoten_anz) {
             matrix[num1][num2] = true;
+            if (!is_gerichtet){
+                matrix[num2][num1] = true;
+            }
         }
     }
-    void SimplerGraph::enf_kante(const size_t &num1, const size_t &num2) {
+    void SimplerGraph::enf_kante(const size_t &num1, const size_t &num2, const bool &is_gerichtet) {
         // Entwernen die Knote
         if (num1 >= 0 && num1 < knoten_anz && num2 >= 0 && num2 < knoten_anz) {
             matrix[num1][num2] = false;
+            if (!is_gerichtet){
+                matrix[num2][num1] = false;
+            }
         }
     }
 
@@ -67,7 +71,7 @@ namespace SimplerGraph {
     }
 
     void SimplerGraph::TiefenSuche(const size_t &s) {
-        folge.push_back(s);
+        folge.push_back(s); // Hier etwas mit Suchelement machen
         for (int i = 0; i < knoten_anz; i++) {
             if (matrix[s][i]) {
                 if (!check_knoten(folge, i)) {
