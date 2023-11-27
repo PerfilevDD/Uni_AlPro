@@ -18,8 +18,8 @@ namespace SimplerGraph
         void TiefenSuche(const size_t &s); // Tiefensuche
 
         // Funktionen um die Knoten zu erstellen bzw. zu loeschen
-        void neue_kante(const size_t &num1, const size_t &num2);
-        void enf_kante(const size_t &num1, const size_t &num2);
+        void neue_kante(const size_t &num1, const size_t &num2, const bool &is_gerichtet);
+        void enf_kante(const size_t &num1, const size_t &num2, const bool &is_gerichtet);
         std::vector<size_t> folge;
 
     private:
