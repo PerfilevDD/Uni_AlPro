@@ -13,7 +13,7 @@ namespace SimplerGraph {
         // Erstellen neue Knoten
         if (num1 >= 0 && num1 < knoten_anz && num2 >= 0 && num2 < knoten_anz) {
             matrix[num1][num2] = true;
-            if (!is_gerichtet){
+            if (!is_gerichtet) {
                 matrix[num2][num1] = true;
             }
         }
@@ -22,7 +22,7 @@ namespace SimplerGraph {
         // Entwernen die Knote
         if (num1 >= 0 && num1 < knoten_anz && num2 >= 0 && num2 < knoten_anz) {
             matrix[num1][num2] = false;
-            if (!is_gerichtet){
+            if (!is_gerichtet) {
                 matrix[num2][num1] = false;
             }
         }
@@ -53,12 +53,9 @@ namespace SimplerGraph {
                     // Pruefen falls eine Kante exestiert
                     if (matrix[v][j]) {
                         // Prufen, damit nur unterer Teil der Graph ausgedruckt wuerde
-                        if (j > s) {
-                            // Pruefen falls der Knoten schon besucht war
-                            if (!check_knoten(folge, j)) {
-                                folge.push_back(j);
-                                queue.push(j);
-                            }
+                        if (!check_knoten(folge, j)) {
+                            folge.push_back(j);
+                            queue.push(j);
                         }
                     }
                 }
@@ -68,7 +65,7 @@ namespace SimplerGraph {
 
     void SimplerGraph::TiefenSuche(const size_t &s) {
         // TiefenSuche-Funktion
-        folge.push_back(s); // Hier etwas mit Suchelement machen
+        folge.push_back(s);  // Hier etwas mit Suchelement machen
         // Gehen die Knoten durch
         for (int i = 0; i < knoten_anz; i++) {
             // Pruefen, falls eine Kante exestiert
