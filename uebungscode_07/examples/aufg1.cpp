@@ -25,6 +25,6 @@ int main() {
     sg.drucken();  // Drucken die Knoten mit der Verbindung
 
     // Nutzen Sie die {fmt}-Library um das Array auszugeben
-    fmt::print("Resultät von Breitensuche von {0}\n", 0);
+    fmt::print("Resultät von Breitensuche von {0}:\n", 0);
     fmt::print("{}\n", fmt::join(sg.folge, " -> "));
 }
