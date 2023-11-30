@@ -69,7 +69,6 @@ namespace SimplerGraph {
 
 // Tiefensuche
 std::vector<size_t> SimplerGraph::tiefensuche(size_t s) {
-       std::cout << "S ist gleich" << s << std::endl;
     std::vector<size_t> folge; // Rückgabearray
     std::stack<size_t> stack; // Stapel für die Tiefensuche
     std::vector<bool> erkundet(knoten_anz, false); // Vektor, der markiert, welche Knoten bereits erkundet wurden
@@ -84,7 +83,7 @@ std::vector<size_t> SimplerGraph::tiefensuche(size_t s) {
 
       // Finde einen unerkundeten Nachbarn des aktuellen Knotens
       size_t nachbar = 0;
-      while ((matrix[aktueller_knoten][nachbar] || erkundet[nachbar])) {
+      while ((erkundet[nachbar])) {
         ++nachbar;
       }
 
