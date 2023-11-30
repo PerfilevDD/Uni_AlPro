@@ -7,14 +7,16 @@
 #include <vector>  // Stellt dynamische Arrays zur Verfügung
 
 int main() {
-    SimplerGraph::SimplerGraph sg(4);  // Inizialisieren Graphen und geben die Anzahl der Knoten
+    SimplerGraph::SimplerGraph sg(6);  // Inizialisieren Graphen und geben die Anzahl der Knoten
 
     bool is_gerichtet = true;
 
     // Initialisieren Kanten
     sg.neue_kante(0, 1, is_gerichtet);
+    sg.neue_kante(0, 4, is_gerichtet);
     sg.neue_kante(1, 2, is_gerichtet);
     sg.neue_kante(1, 3, is_gerichtet);
+    sg.neue_kante(4, 5, is_gerichtet);
 
     // Rufen BreitenScuhe-Funktin aus
     sg.BreitenSuche(0);
