@@ -42,6 +42,8 @@ namespace SimplerGraph {
         // BreitenSuche-Funktion
         std::queue<size_t> queue;
 
+        folge.push_back(s);
+
         // Pruefen falls der Startknoten exestiert im Array aller Knoten
         if (s < knoten_anz) {
             queue.push(s);
@@ -53,9 +55,12 @@ namespace SimplerGraph {
                     // Pruefen falls eine Kante exestiert
                     if (matrix[v][j]) {
                         // Prufen, damit nur unterer Teil der Graph ausgedruckt wuerde
-                        if (!check_knoten(folge, j)) {
-                            folge.push_back(j);
-                            queue.push(j);
+                        if (j > s) {
+                            // Pruefen falls der Knoten schon besucht war
+                            if (!check_knoten(folge, j)) {
+                                folge.push_back(j);
+                                queue.push(j);
+                            }
                         }
                     }
                 }
