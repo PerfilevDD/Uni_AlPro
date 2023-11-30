@@ -13,12 +13,20 @@ namespace SimplerGraph {
   }
 
    // Kanten werden erstellt
-  void SimplerGraph::erstelleKanten(const size_t &num1, const size_t &num2) {
+  void SimplerGraph::erstelleKanten(const size_t &num1, const size_t &num2, const bool &is_gerichtet) {
     matrix[num1][num2] = true;
+    if (!is_gerichtet) {
+                matrix[num2][num1] = true;
+            }
+
   }
    // Kanten werden gelöscht
-   void SimplerGraph::loescheKanten(const size_t &num1, const size_t &num2) {
+   void SimplerGraph::loescheKanten(const size_t &num1, const size_t &num2, const bool &is_gerichtet) {
     matrix[num1][num2] = false;
+    if (!is_gerichtet) {
+                matrix[num2][num1] = false;
+            }
+
   }
 
   void SimplerGraph::drucke() {
@@ -70,20 +78,20 @@ namespace SimplerGraph {
 // Tiefensuche
 std::vector<size_t> SimplerGraph::tiefensuche(size_t s) {
     std::vector<size_t> folge; // Rückgabearray
-    std::stack<size_t> stack; // Stapel für die Tiefensuche
+    std::stack<size_t> stack; // Stack
     std::vector<bool> erkundet(knoten_anz, false); // Vektor, der markiert, welche Knoten bereits erkundet wurden
 
-    // Schiebe den Startknoten auf den Stapel und markiere ihn als erkundet
+    // Schiebe den Startknoten auf Stack und markiere ihn als erkundet
     stack.push(s);
     erkundet[s] = true;
     folge.push_back(s);
 
     while (!stack.empty()) {
-      size_t aktueller_knoten = stack.top(); // der Wert des obersten Elements im Stapel ist der aktuelle Knoten
+      size_t aktueller_knoten = stack.top(); // der Wert des obersten Elements im Stack ist der aktuelle Knoten
 
       // Finde einen unerkundeten Nachbarn des aktuellen Knotens
       size_t nachbar = 0;
-      while ((erkundet[nachbar])) {
+      while ((erkundet[nachbar])) { // Der Index wird so lange erhöht, bis ein unerkundeter Nachbar gefunden wird
         ++nachbar;
       }
 

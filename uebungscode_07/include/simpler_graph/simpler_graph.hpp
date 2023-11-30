@@ -13,8 +13,8 @@ namespace SimplerGraph
     public:
         // Erstellt einen Graph mit einer festen Knotenanzahl
         SimplerGraph(size_t knoten_anzahl);
-        void erstelleKanten(const size_t &num1, const size_t &num2);
-        void loescheKanten(const size_t &num1, const size_t &num2);
+        void erstelleKanten(const size_t &num1, const size_t &num2, const bool &is_gerichtet);
+        void loescheKanten(const size_t &num1, const size_t &num2, const bool &is_gerichtet);
 
 
         void drucke();

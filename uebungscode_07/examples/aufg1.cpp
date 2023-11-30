@@ -8,14 +8,16 @@
 
 int main() {
     SimplerGraph::SimplerGraph sg(6);  // Inizialisieren Graphen und geben die Anzahl der Knoten
+    bool is_gerichtet = true;
+
 
 
     // Initialisieren Kanten
-    sg.erstelleKanten(0, 1);
-    sg.erstelleKanten(0, 4);
-    sg.erstelleKanten(1, 2);
-    sg.erstelleKanten(1, 3);
-    sg.erstelleKanten(4, 5);
+    sg.erstelleKanten(0, 1, is_gerichtet);
+    sg.erstelleKanten(0, 4, is_gerichtet);
+    sg.erstelleKanten(1, 2, is_gerichtet);
+    sg.erstelleKanten(1, 3, is_gerichtet);
+    sg.erstelleKanten(4, 5, is_gerichtet);
     
     fmt::print("Alle Kanten, die exestieren\n");
     sg.drucke();  // Drucken die Knoten mit der Verbindung
