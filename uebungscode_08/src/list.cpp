@@ -12,15 +12,23 @@ namespace Datenstrukturen {
     }
     ListNodeptr List::insert_front(const int x) {
         ListNodeptr n = std::make_shared<ListNode>(x);
+        std::cout << "head  " << head << std::endl;
+        std::cout << "n  " << n << std::endl;
         n->next = head;
         head = n;
+        std::cout << "n->next  " << n->next << std::endl;
+        std::cout << "head 2  " << head << std::endl;
+        return head;
+    }
+
+    ListNodeptr List::remove_front(){
+        head = head->next;
         return head;
     }
 
     void List::print() const {
         ListNodeptr aktuell = head;
         while (aktuell) {
-            std::cout << "ss" << std::endl;
             std::cout << aktuell->data_ << "->";
             aktuell = aktuell->next;
         }
