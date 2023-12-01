@@ -38,31 +38,30 @@ namespace SimplerGraph {
         return false;
     }
 
+    // Breitensuche
     void SimplerGraph::BreitenSuche(const size_t &s) {
-        // BreitenSuche-Funktion
-        std::queue<size_t> queue;
+        std::queue<size_t> q;  // Warteschlange, die die zu erkundenden Knoten enthält
 
+        // Markiere den Startknoten als erkundet und füge ihn in die Warteschlange und Rückgabearray ein
+        std::vector<bool> erkundet(knoten_anz, false);  // Vektor, der markiert, welche Knoten bereits erkundet wurden
+        erkundet[s] = true;
+        q.push(s);
         folge.push_back(s);
 
-        // Pruefen falls der Startknoten exestiert im Array aller Knoten
-        if (s < knoten_anz) {
-            queue.push(s);
-            // Gehen Queue durch
-            while (!queue.empty()) {
-                int v = queue.front();
-                queue.pop();
-                for (size_t j = 0; j < knoten_anz; j++) {
-                    // Pruefen falls eine Kante exestiert
-                    if (matrix[v][j]) {
-                        // Prufen, damit nur unterer Teil der Graph ausgedruckt wuerde
-                        if (j > s) {
-                            // Pruefen falls der Knoten schon besucht war
-                            if (!check_knoten(folge, j)) {
-                                folge.push_back(j);
-                                queue.push(j);
-                            }
-                        }
-                    }
+        while (!q.empty()) {                      // Schleife geht solange die Warteschlange q nicht leer ist
+            size_t aktueller_knoten = q.front();  // der Wert des vordersten Elements in der Warteschlange q ist aktueller knoten
+            q.pop();                              // das vorderste Element aus der Warteschlange wird entfernt, da es erkundet wurde
+
+            // Durchlaufe alle Nachbarn des aktuellen Knotens
+            for (size_t nachbar = 0; nachbar < knoten_anz; ++nachbar) {
+                // für jeden unerkundeten Nachbarn des aktuellen Knotens wird überprüft, ob es eine Kante gibt
+                if (matrix[aktueller_knoten][nachbar] && !erkundet[nachbar]) {
+                    /* Wenn eine Kante vorhanden ist und der Nachbarknoten noch nicht erkundet wurde,
+                     wird er als erkundet markiert, zur Warteschlange hinzugefügt und
+                     in Rückgabearray hinzugefügt */
+                    erkundet[nachbar] = true;
+                    q.push(nachbar);
+                    folge.push_back(nachbar);
                 }
             }
         }
