@@ -19,6 +19,11 @@ namespace Datenstrukturen {
         return head;
     }
     
+    ListNodeptr List::insert_after(const ListNodeptr& pred, const int x){
+        std::cout << head.get() << std::endl;
+        return head;
+    }
+
     ListNodeptr List::remove_front() {
         // Entfernen den ersten Element der Liste
         if (head != 0) {
