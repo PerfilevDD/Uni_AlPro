@@ -11,19 +11,22 @@ namespace Datenstrukturen {
         // Initializieren Nullpointer
     }
     ListNodeptr List::insert_front(const int x) {
-        ListNodeptr n = std::make_shared<ListNode>(x);
-        std::cout << "head  " << head << std::endl;
-        std::cout << "n  " << n << std::endl;
-        n->next = head;
-        head = n;
-        std::cout << "n->next  " << n->next << std::endl;
-        std::cout << "head 2  " << head << std::endl;
+        ListNodeptr n = std::make_shared<ListNode>(x);  // Erstellen neu Knoten
+        n->next = head; // Setzen pointer von n auf head
+        head = n; // n ist jetzt head
+        std::cout << std::endl;
+
         return head;
     }
-
-    ListNodeptr List::remove_front(){
-        head = head->next;
-        return head;
+    
+    ListNodeptr List::remove_front() {
+        // Entfernen den ersten Element der Liste
+        if (head != 0) {
+            // Setzen head auf dem zweiten Element der Liste
+            head = head->next;
+            return head;
+        }
+        return nullptr;
     }
 
     void List::print() const {
