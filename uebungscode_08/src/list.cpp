@@ -20,7 +20,7 @@ namespace Datenstrukturen {
     }
     
     ListNodeptr List::insert_after(const ListNodeptr& pred, const int x){
-        std::cout << head.get() << std::endl;
+        std::cout << "insert after  " << pred << std::endl;
         return head;
     }
 
