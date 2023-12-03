@@ -22,8 +22,5 @@ int main() {
     std::cout << "=========" << std::endl;
 
     auto remove_3 = list.remove_after(insert_3);// Entfernt ein Element nach einem Element der Liste
-
-
-
     list.print();
 }
