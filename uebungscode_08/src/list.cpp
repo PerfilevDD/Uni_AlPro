@@ -49,10 +49,23 @@ namespace Datenstrukturen {
             return pred;
         } else if (pred->next == NULL) {
             // Falls letzter Element gegeben wurde, return 0
-            return 0;
+            return nullptr;
         } else {
             // Falls nullptr gegeben wurde, entfernen ersten Element der Liste
             return remove_front();
+        }
+    }
+
+    ListNodeptr List::next(const ListNodeptr& n) const {
+        // Get the next Node of the current List
+        if (n != nullptr && n->next != NULL) {
+            // Pruefen damit 'ausser' der Liste nicht zu gehen
+            return n->next;
+        } else if (n->next == NULL) {
+            // Falls letzter Element gegeben wurde, return 0
+            return nullptr;
+        } else {
+            return nullptr;
         }
     }
 
