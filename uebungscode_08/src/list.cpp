@@ -18,11 +18,17 @@ namespace Datenstrukturen {
     }
 
     ListNodeptr List::insert_after(const ListNodeptr& pred, const int x) {
-        ListNodeptr n = std::make_shared<ListNode>(x);  // Erstellen neu Knoten
-        ListNodeptr alt_pointer = pred->next;           // Alter Pointer, der auf den naechsten Element nach pred zeigte
-        pred->next = n;                                 // Setzen Pointer von altem Element auf neuem Pointer
-        n->next = alt_pointer;                          // Setzen naechster Pointer nach n auf vorherigen naechsten Poninter
-        return n;
+        // Funktion fuegt ein Element nach dem anderen Element hinzu
+        if (pred != nullptr) {
+            ListNodeptr n = std::make_shared<ListNode>(x);  // Erstellen neu Knoten
+            ListNodeptr alt_pointer = pred->next;           // Alter Pointer, der auf den naechsten Element nach pred zeigte
+            pred->next = n;                                 // Setzen Pointer von altem Element auf neuem Pointer
+            n->next = alt_pointer;                          // Setzen naechster Pointer nach n auf vorherigen naechsten Poninter
+            return n;
+        } else {
+            // Falls nullptr gegeben wuerden, rufen insert_front auf
+            return insert_front(x);
+        }
     }
 
     ListNodeptr List::remove_front() {
@@ -33,6 +39,21 @@ namespace Datenstrukturen {
             return head;
         }
         return nullptr;
+    }
+
+    ListNodeptr List::remove_after(const ListNodeptr& pred) {
+        // Funktion entfenrnt ein Element nach dem anderen Element
+        if (pred != nullptr && pred->next != NULL) {
+            // Pruefen damit nicht Element 'ausser oder vor' der Liste zu entfernen
+            pred->next = pred->next->next;
+            return pred;
+        } else if (pred->next == NULL) {
+            // Falls letzter Element gegeben wurde, return 0
+            return 0;
+        } else {
+            // Falls nullptr gegeben wurde, entfernen ersten Element der Liste
+            return remove_front();
+        }
     }
 
     void List::print() const {
