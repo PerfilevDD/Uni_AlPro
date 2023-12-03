@@ -14,6 +14,16 @@ int main() {
     auto insert_3 = list.insert_after(insert_4, 3);
     auto insert_5 = list.insert_front(5);
     auto insert_6 = list.insert_after(insert_3, 6);
-    list.remove_front();  // Entfernt ein Element am Anfang der Liste
+    list.remove_front();                            // Entfernt ein Element am Anfang der Liste
+    auto insert_7 = list.insert_after(nullptr, 7);  // Fuegt ein Element am Anfang der Liste durch inser_after ninzu
+    auto insert_0 = list.insert_after(insert_7, 0);
+    list.print();  // Druck die Liste
+
+    std::cout << "=========" << std::endl;
+
+    auto remove_3 = list.remove_after(insert_3);// Entfernt ein Element nach einem Element der Liste
+
+
+
     list.print();
 }
