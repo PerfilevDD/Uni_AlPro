@@ -21,6 +21,10 @@ int main() {
 
     std::cout << "=========" << std::endl;
 
-    auto remove_3 = list.remove_after(insert_3);// Entfernt ein Element nach einem Element der Liste
+    auto remove_3 = list.remove_after(insert_3);  // Entfernt ein Element nach einem Element der Liste
     list.print();
+
+    std::cout << "=========" << std::endl;
+
+    std::cout << "Ein naechstes Element ist " << list.next(insert_4)->data_ << std::endl; // Druckt ein Element nach einem Element aus
 }
