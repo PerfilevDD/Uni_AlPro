@@ -55,13 +55,17 @@ namespace Datenstrukturen {
     }
 
     void TreeNode::set_right_child(int data) {
-    }
+        std::cout << "this " << this << std::endl;
+        if (right_child == nullptr) {
+            // TreeNodeptr left_child(new TreeNode(data));
 
-    void BinaryTree::print() const {
-        if (root == nullptr) {
-            return;
+            right_child = std::make_shared<TreeNode>(data);
+            std::cout << "left_child->get_data() " << right_child->get_data() << std::endl;
+            std::cout << "left_child " << right_child << std::endl;
+            this->right_child;
         }
     }
+
 
     bool check_knoten(std::vector<int> &arr, const size_t &j) {
         // Funktion prueft ob ein Knoten im Array schon ist
@@ -74,9 +78,9 @@ namespace Datenstrukturen {
     }
 
     void BinaryTree::print() const {
-        std::cout << "root->get_left_child() " << root->get_left_child() << std::endl;
-        std::cout << "root->get_left_child()->get_left_child()->get_data() " << root->get_left_child()->get_left_child()->get_data() << std::endl;
-        std::cout << "root->get_data() " << root->get_data() << std::endl;
+        //std::cout << "root->get_left_child() " << root->get_left_child() << std::endl;
+        //std::cout << "root->get_left_child()->get_left_child()->get_data() " << root->get_left_child()->get_left_child()->get_data() << std::endl;
+        //std::cout << "root->get_data() " << root->get_data() << std::endl;
 
         // BreitenSuche-Funktion
         std::queue<TreeNodeptr> queue;
