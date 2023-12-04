@@ -66,8 +66,7 @@ namespace Datenstrukturen {
         }
     }
 
-
-    bool check_knoten(std::vector<int> &arr, const size_t &j) {
+    bool check_knoten(std::vector<TreeNodeptr> &arr, const TreeNodeptr &j) {
         // Funktion prueft ob ein Knoten im Array schon ist
         for (const auto &unerk_knoten : arr) {
             if (unerk_knoten == j) {
@@ -78,20 +77,23 @@ namespace Datenstrukturen {
     }
 
     void BinaryTree::print() const {
-        //std::cout << "root->get_left_child() " << root->get_left_child() << std::endl;
-        //std::cout << "root->get_left_child()->get_left_child()->get_data() " << root->get_left_child()->get_left_child()->get_data() << std::endl;
-        //std::cout << "root->get_data() " << root->get_data() << std::endl;
+        // std::cout << "root->get_left_child() " << root->get_left_child() << std::endl;
+        // std::cout << "root->get_left_child()->get_left_child()->get_data() " << root->get_left_child()->get_left_child()->get_data() << std::endl;
+        // std::cout << "root->get_data() " << root->get_data() << std::endl;
 
         // BreitenSuche-Funktion
         std::queue<TreeNodeptr> queue;
-        std::vector<int> folge;
+        std::vector<TreeNodeptr> folge;
+        std::vector<std::vector<TreeNodeptr>> ebene;
         int knoten_anz = root.use_count();
         std::vector<bool> erkunden(knoten_anz, false);
+
+        int level = 0;
 
         TreeNodeptr s = root;
 
         queue.push(s);
-        folge.push_back(s->get_data());
+        folge.push_back(s);
         // Gehen Queue durch
         while (!queue.empty()) {
             TreeNodeptr v = queue.front();
@@ -99,21 +101,33 @@ namespace Datenstrukturen {
             if (v->get_left_child() != nullptr) {
                 TreeNodeptr left = v->get_left_child();
                 // Pruefen falls der Knoten schon besucht war
-                if (!check_knoten(folge, left->get_data())) {
-                    folge.push_back(left->get_data());
+                if (!check_knoten(folge, left)) {
+                    folge.push_back(left);
                     queue.push(left);
                 }
+                level++;
             }
 
             if (v->get_right_child() != nullptr) {
                 TreeNodeptr right = v->get_right_child();
                 // Pruefen falls der Knoten schon besucht war
-                if (!check_knoten(folge, right->get_data())) {
-                    folge.push_back(right->get_data());
+                if (!check_knoten(folge, right)) {
+                    folge.push_back(right);
                     queue.push(right);
                 }
+                level++;
             }
         }
+
+        for (int i = 0; i < folge.size(); i++) {
+            if (i == folge.size() - 1) {
+                std::cout << folge[i] << std::endl;
+            } else {
+                std::cout << folge[i] << " -> ";
+            }
+        }
+
+        std::cout << level << std::endl;
     }
 
 }  // namespace Datenstrukturen
