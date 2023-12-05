@@ -28,7 +28,7 @@ namespace Datenstrukturen {
 
     void TreeNode::set_data(int data) {
         // Sets the data
-        left_child->set_left_child(data);
+        this->data_ = data;
     }
 
     // Funktion mit children
@@ -57,6 +57,23 @@ namespace Datenstrukturen {
             this->right_child;
         }
     }
+
+    // Funktionen mit remove
+    void TreeNode::remove_left_child() {
+        // Removes the left child (if it exists)
+        if (left_child != nullptr) {
+            left_child = nullptr;
+        }
+    }
+
+    void TreeNode::remove_right_child() {
+        // Removes the right child (if it exists)
+        if (right_child != nullptr) {
+            right_child = nullptr;
+        }
+    }
+
+    // Print-Funktion
 
     bool check_knoten(std::vector<TreeNodeptr> &arr, const TreeNodeptr &j) {
         // Funktion prueft, ob ein Knoten im Array schon ist
