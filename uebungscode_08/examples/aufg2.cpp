@@ -54,8 +54,9 @@ int main() {
 
     std::cout << "===========" << std::endl;
 
-    // Delete left child von 11(links oben)
-    left11->remove_left_child();
+    left11->remove_left_child(); // Delete left child von 11(links oben)
+    root->set_left_child(25); // Setzen den linken Knoten von root neu
+    right0->set_data(2); // Beispiel fuer set_data
     binaryTree.print();  // Print Tree
 }
 
