@@ -46,7 +46,8 @@ namespace Datenstrukturen {
         // Sets the value of the left child (and creates the child if necessary)
         if (left_child == nullptr) {
             left_child = std::make_shared<TreeNode>(data);
-            this->left_child;
+        } else {
+            left_child->set_data(data);
         }
     }
 
@@ -54,7 +55,8 @@ namespace Datenstrukturen {
         // Sets the value of the right child (and creates the child if necessary)
         if (right_child == nullptr) {
             right_child = std::make_shared<TreeNode>(data);
-            this->right_child;
+        }else {
+            right_child->set_data(data);
         }
     }
 
