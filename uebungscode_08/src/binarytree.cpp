@@ -46,6 +46,8 @@ namespace Datenstrukturen {
         // Sets the value of the left child (and creates the child if necessary)
         if (left_child == nullptr) {
             left_child = std::make_shared<TreeNode>(data);
+        } else {
+            left_child->set_data(data);
         }
     }
 
@@ -53,6 +55,8 @@ namespace Datenstrukturen {
         // Sets the value of the right child (and creates the child if necessary)
         if (right_child == nullptr) {
             right_child = std::make_shared<TreeNode>(data);
+        }else {
+            right_child->set_data(data);
         }
     }
 
@@ -110,23 +114,25 @@ namespace Datenstrukturen {
             } else {
                 if (v->get_left_child() != nullptr) {
                     TreeNodeptr left = v->get_left_child();
-                    std::cout << left->get_data() << "  ";  // Druckt den aktuellen Knoten
-
+                    
                     // Pruefen falls der Knoten schon besucht war
                     if (!check_knoten(folge, left)) {
                         folge.push_back(left);
                         queue.push(left);
+                    std::cout << left->get_data() << "  ";  // Druckt den aktuellen Knoten
                     }
                 }
+            
 
                 if (v->get_right_child() != nullptr) {
                     TreeNodeptr right = v->get_right_child();
-                    std::cout << right->get_data() << "  ";  // Druckt den aktuellen Knoten
+                    
 
                     // Pruefen falls der Knoten schon besucht war
                     if (!check_knoten(folge, right)) {
                         folge.push_back(right);
                         queue.push(right);
+                   std::cout << right->get_data() << "  ";  // Druckt den aktuellen Knoten
                     }
                 }
             }
