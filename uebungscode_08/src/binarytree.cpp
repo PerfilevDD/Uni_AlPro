@@ -92,10 +92,10 @@ namespace Datenstrukturen {
         std::queue<TreeNodeptr> queue;
         std::vector<TreeNodeptr> folge;  // Folge, um besuchte Knoten zu pruefen
 
-        queue.push(nullptr);            // Push nullptr zu queue, damit BinaryTree mit Ebenen auszudrucken
-        queue.push(root);               // Erste Knote in Tree (fuer queue)
-        folge.push_back(root);          // Erste Knote in Tree (fuer folge)
-        std::cout << root->get_data();  // Druckt die erste Knote in Tree
+        queue.push(nullptr);            // Push nullptr zu queue, um BinaryTree mit Ebenen auszudrucken
+        queue.push(root);               // Erster Knoten in Tree (fuer queue)
+        folge.push_back(root);          // Erster Knoten in Tree (fuer folge)
+        std::cout << root->get_data();  // Druckt den ersten Knoten (Wurzel) in Tree
 
         // BreitenSuche-Funktion
         while (!queue.empty()) {
