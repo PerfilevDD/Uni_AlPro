@@ -26,5 +26,5 @@ int main() {
 
     std::cout << "=========" << std::endl;
 
-    std::cout << "Ein naechstes Element ist " << list.next(insert_4)->data_ << std::endl; // Druckt ein Element nach einem Element aus
+    std::cout << "Ein naechstes Element nach 'insert_4' ist " << list.next(insert_4)->data_ << std::endl; // Druckt ein Element nach einem Element aus
 }
