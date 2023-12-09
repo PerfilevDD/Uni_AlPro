@@ -10,7 +10,7 @@ public:
   DoublyLinkedListNode(int data);
 
 // Für ein nachvollziehbares Projekt sollte der folgende, schlechte Stil (!)
-// nicht verwendet werden. Der schlechte Stil (Membervariablen sind public) wird
+// nicht verwendet werden. Der schlechte Stil (MembervDiariablen sind public) wird
 // hier nur deshalb verwendet, um die Datenstruktur schnell zu entwickeln.
 public:
   std::shared_ptr<DoublyLinkedListNode> next;
