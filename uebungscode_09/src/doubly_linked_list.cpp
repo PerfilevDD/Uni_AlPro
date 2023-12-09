@@ -12,6 +12,16 @@ namespace Datenstrukturen {
         // Init. ein Knoten der Liste
     }
 
+    DListNodeptr DoublyLinkedList::get_first() const {
+        // Get the first Node of the current List
+        return head;
+    }
+
+    DListNodeptr DoublyLinkedList::get_last() const {
+        // Get the last Node of the current List
+        return tail;
+    }
+
     DListNodeptr DoublyLinkedList::insert_front(int x) {
         DListNodeptr n = std::make_shared<DoublyLinkedListNode>(x);
         n->next = head;
@@ -39,6 +49,16 @@ namespace Datenstrukturen {
             tail = n;
         }
         return n;
+    }
+
+    DListNodeptr DoublyLinkedList::next(const DListNodeptr& n) const {
+        // Get the next Node of the current List
+        return n->next;
+    }
+
+    DListNodeptr DoublyLinkedList::prev(const DListNodeptr& n) const {
+        // Get the previous Node of the current List
+        return n->prev.lock();
     }
 
     void DoublyLinkedList::print() const {
