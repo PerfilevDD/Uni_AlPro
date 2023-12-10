@@ -48,11 +48,20 @@ int main() {
         right544->set_left_child(11);
         auto leftr11 = right544->get_left_child();
 
+  std::cout << "PreOrder: ";
   bt.print_preorder();
 
-  std::cout
+  std::cout << std::endl;
+  std::cout << "InOrder: ";
+  bt.print_inorder();
+  
+  std::cout << std::endl;
+  std::cout << "LevelOrder: ";
+  bt.print_levelorder();
+
+  /*std::cout
     << " " << std::to_string(root->get_data())
-    << " " << std::to_string(root->get_left_child_data()) << std::endl;
+    << " " << std::to_string(root->get_left_child_data()) << std::endl;*/
   
   // 
   //                       KEINE PANIK
