@@ -78,6 +78,11 @@ namespace Datenstrukturen {
         }
     }
 
+    void BinaryTree::print_postorder() const {
+        // Print InOrder
+    }
+
+    // Funktion fuer LevelOrder, um die besuchten Knoten zu pruefen
     bool check_knoten(std::vector<BinaryTreeNode::NodeSharedPtr> &arr, const BinaryTreeNode::NodeSharedPtr &is_visited) {
         // Funktion prueft, ob ein Knoten im Array schon ist
         for (const auto &unerk_knoten : arr) {
@@ -93,8 +98,8 @@ namespace Datenstrukturen {
         // LevelOreder aka BreitenSuche
         std::queue<BinaryTreeNode::NodeSharedPtr> queue;
         std::vector<BinaryTreeNode::NodeSharedPtr> folge;  // Folge, um besuchte Knoten zu pruefen
-        queue.push(_root);       // Erste Knote in Tree (fuer queue)
-        folge.push_back(_root);  // Erste Knote in Tree (fuer folge)
+        queue.push(_root);                                 // Erste Knote in Tree (fuer queue)
+        folge.push_back(_root);                            // Erste Knote in Tree (fuer folge)
 
         // BreitenSuche-Funktion
         while (!queue.empty()) {
