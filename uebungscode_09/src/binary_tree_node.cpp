@@ -28,12 +28,15 @@ namespace Datenstrukturen {
     const BinaryTreeNode::data_t BinaryTreeNode::get_right_child_data() const {
         return _right_child->get_data();
     }
+    BinaryTreeNode::NodeWeakPtr BinaryTreeNode::get_parent() {
+      return this->_parent;
+    }
 
     BinaryTreeNode::NodeSharedPtr BinaryTreeNode::get_left_child() {
-      return this->_left_child;
+        return this->_left_child;
     }
     BinaryTreeNode::NodeSharedPtr BinaryTreeNode::get_right_child() {
-      return this->_right_child;
+        return this->_right_child;
     }
     void BinaryTreeNode::set_left_child(data_t data) {
         // Hier wird die Funktion weak_from_this verwendet, siehe auch Vorlesungsfolien.
