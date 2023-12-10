@@ -25,7 +25,6 @@ namespace Datenstrukturen {
     DListNodeptr DoublyLinkedList::insert_front(int x) {
         DListNodeptr n = std::make_shared<DoublyLinkedListNode>(x);
         n->next = head;
-        // n->prev.lock() = nullptr;
         head = n;
         head->prev.lock() = nullptr;
         tail = head;
@@ -36,19 +35,38 @@ namespace Datenstrukturen {
         DListNodeptr n = std::make_shared<DoublyLinkedListNode>(x);  // Erstellen neu Knoten
         DListNodeptr alt_pointer = pred->next;                       // Alter Pointer, der auf den naechsten Element nach pred zeigte
 
-        n->prev.lock() = pred;  // WeakPointer von n zeigt auf pred
+        n->prev = pred;         // WeakPointer von n zeigt auf pred
         n->next = alt_pointer;  // Setzen naechster Pointer nach n auf vorherigen naechsten Poninter
         pred->next = n;         // Setzen Pointer von altem Element auf neuem Pointer
 
         // Pruefen, falls ein naechster Pointer nach pred exestiert
         if (alt_pointer) {
             // Fall ja, setzen prev dieses Pointers aus n
-            alt_pointer->prev.lock() = n;
+            alt_pointer->prev = n;
         } else {
             // Falls nein, dann n ist tail
             tail = n;
         }
         return n;
+    }
+
+    DListNodeptr DoublyLinkedList::remove(const DListNodeptr& n) {
+        // Entfernt das Element
+        if (n == head) {
+            // Falls head entfernet wird
+            head = head->next;
+            return n;
+        } else if (n == tail) {
+            // Falls tail entfernet wird
+            tail = n->prev.lock();
+            tail->next = nullptr;
+            return n;
+        } else {
+            // Falls ein Element der Liste entfernet wird
+            n->next->prev = n->prev.lock();
+            n->prev.lock()->next = n->next;
+            return n;
+        }
     }
 
     DListNodeptr DoublyLinkedList::next(const DListNodeptr& n) const {
@@ -58,13 +76,18 @@ namespace Datenstrukturen {
 
     DListNodeptr DoublyLinkedList::prev(const DListNodeptr& n) const {
         // Get the previous Node of the current List
-        return n->prev.lock();
+        // Überprüfen, ob der WeakPointer gültig ist, bevor er gelockt wird
+        if (auto prevPtr = n->prev.lock()) {
+            return prevPtr;
+        } else {
+            // Der WeakPointer ist abgelaufen, handle dies entsprechend (z.B., return nullptr)
+            return nullptr;
+        }
     }
 
     void DoublyLinkedList::print() const {
         DListNodeptr aktuell = head;
 
-        std::cout << tail->data_ << std::endl;
         while (aktuell) {
             std::cout << aktuell->data_ << " -> ";
             aktuell = aktuell->next;
