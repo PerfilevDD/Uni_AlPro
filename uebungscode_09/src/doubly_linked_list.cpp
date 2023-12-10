@@ -23,11 +23,15 @@ namespace Datenstrukturen {
     }
 
     DListNodeptr DoublyLinkedList::insert_front(int x) {
+        // Setzen neu head
         DListNodeptr n = std::make_shared<DoublyLinkedListNode>(x);
         n->next = head;
         head = n;
         head->prev.lock() = nullptr;
-        tail = head;
+        if (tail == nullptr) {
+            // Setzten tail zu head, falls die Liste erstmal erstellt wurde
+            tail = head;
+        }
         return head;
     }
 
