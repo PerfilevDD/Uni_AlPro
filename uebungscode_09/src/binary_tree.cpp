@@ -1,5 +1,6 @@
 #include <datenstrukturen/binary_tree.hpp>
 #include <iostream>
+#include <queue>
 #include <stack>
 
 namespace Datenstrukturen {
@@ -77,4 +78,56 @@ namespace Datenstrukturen {
         }
     }
 
+    bool check_knoten(std::vector<BinaryTreeNode::NodeSharedPtr> &arr, const BinaryTreeNode::NodeSharedPtr &is_visited) {
+        // Funktion prueft, ob ein Knoten im Array schon ist
+        for (const auto &unerk_knoten : arr) {
+            if (unerk_knoten == is_visited) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void BinaryTree::print_levelorder() const {
+        // LevelOreder aka BreitenSuche
+        std::queue<BinaryTreeNode::NodeSharedPtr> queue;
+        std::vector<BinaryTreeNode::NodeSharedPtr> folge;  // Folge, um besuchte Knoten zu pruefen
+        queue.push(_root);       // Erste Knote in Tree (fuer queue)
+        folge.push_back(_root);  // Erste Knote in Tree (fuer folge)
+
+        // BreitenSuche-Funktion
+        while (!queue.empty()) {
+            // Gehen Queue durch
+            BinaryTreeNode::NodeSharedPtr aktuell = queue.front();
+            queue.pop();
+
+            if (aktuell->get_left_child() != nullptr) {
+                BinaryTreeNode::NodeSharedPtr left = aktuell->get_left_child();
+                // Pruefen falls der Knoten schon besucht war
+                if (!check_knoten(folge, left)) {
+                    folge.push_back(left);
+                    queue.push(left);
+                }
+            }
+
+            if (aktuell->get_right_child() != nullptr) {
+                BinaryTreeNode::NodeSharedPtr right = aktuell->get_right_child();
+                // Pruefen falls der Knoten schon besucht war
+                if (!check_knoten(folge, right)) {
+                    folge.push_back(right);
+                    queue.push(right);
+                }
+            }
+        }
+
+        // Print alle Knoten, die in vector gespeicher sind
+        for (int i = 0; i < folge.size(); i++) {
+            if (i == folge.size() - 1) {
+                std::cout << folge[i]->get_data() << std::endl;
+            } else {
+                std::cout << folge[i]->get_data() << " -> ";
+            }
+        }
+    }
 }  // namespace Datenstrukturen
