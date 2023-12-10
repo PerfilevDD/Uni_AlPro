@@ -75,17 +75,21 @@ namespace Datenstrukturen {
 
     DListNodeptr DoublyLinkedList::next(const DListNodeptr& n) const {
         // Get the next Node of the current List
-        return n->next;
+        if (n == tail) {
+            // Falls tail ausgewaehlt wurde, return tail
+            return tail;
+        } else {
+            return n->next;
+        }
     }
 
     DListNodeptr DoublyLinkedList::prev(const DListNodeptr& n) const {
-        // Get the previous Node of the current List
-        // Überprüfen, ob der WeakPointer gültig ist, bevor er gelockt wird
-        if (auto prevPtr = n->prev.lock()) {
-            return prevPtr;
+        // Get the previous Node of the current List=
+        if (n == head) {
+            // Falls tail ausgewaehlt wurde, return tail
+            return head;
         } else {
-            // Der WeakPointer ist abgelaufen, handle dies entsprechend (z.B., return nullptr)
-            return nullptr;
+            return n->prev.lock();
         }
     }
 
