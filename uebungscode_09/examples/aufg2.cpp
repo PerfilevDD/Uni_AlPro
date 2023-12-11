@@ -14,7 +14,7 @@ int main() {
     // Links von root
     
         // 11
-        root->set_left_child(11);
+        root->set_left_child(111);
         auto left11 = root->get_left_child();
 
         // 9
@@ -54,6 +54,10 @@ int main() {
   std::cout << std::endl;
   std::cout << "InOrder: ";
   bt.print_inorder();
+
+  std::cout << std::endl;
+  std::cout << "PostOrder: ";
+  bt.print_postorder();
   
   std::cout << std::endl;
   std::cout << "LevelOrder: ";
@@ -61,7 +65,8 @@ int main() {
 
   // Nach der Entfernung des rechten Kinders
   std::cout << "====================" << std::endl;
-  root->del_right_child();
+  root->del_left_child();
+  root->del_left_child();
 
   std::cout << "PreOrder: ";
   bt.print_preorder();
@@ -69,11 +74,16 @@ int main() {
   std::cout << std::endl;
   std::cout << "InOrder: ";
   bt.print_inorder();
+
+  std::cout << std::endl;
+  std::cout << "PostOrder: ";
+  bt.print_postorder();
   
   std::cout << std::endl;
   std::cout << "LevelOrder: ";
   bt.print_levelorder();
 
+  std::cout << left11->get_parent().lock()->get_data();
 
   /*std::cout
     << " " << std::to_string(root->get_data())
