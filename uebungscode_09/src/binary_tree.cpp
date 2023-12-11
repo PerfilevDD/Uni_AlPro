@@ -78,10 +78,6 @@ namespace Datenstrukturen {
         }
     }
 
-    void BinaryTree::print_postorder() const {
-        // Print InOrder
-    }
-
     // Funktion fuer LevelOrder, um die besuchten Knoten zu pruefen
     bool check_knoten(std::vector<BinaryTreeNode::NodeSharedPtr> &arr, const BinaryTreeNode::NodeSharedPtr &is_visited) {
         // Funktion prueft, ob ein Knoten im Array schon ist
@@ -92,6 +88,37 @@ namespace Datenstrukturen {
         }
 
         return false;
+    }
+    void BinaryTree::print_postorder() const {
+        // Print PostOrder
+        std::stack<BinaryTreeNode::NodeSharedPtr> stack;
+        std::vector<BinaryTreeNode::NodeSharedPtr> folge;
+        folge.push_back(_root);
+        stack.push(_root);
+        while (!stack.empty()) {
+            BinaryTreeNode::NodeSharedPtr aktuell = stack.top();
+
+            if ((aktuell->get_left_child() == nullptr && aktuell->get_right_child() == nullptr) ||
+                check_knoten(folge, aktuell->get_left_child()) || check_knoten(folge, aktuell->get_right_child())) {
+                if (stack.top() == _root) {
+                    // Wird ganz am Ende erfuellt
+                    std::cout << aktuell->get_data() << std::endl;
+                } else {
+                    std::cout << aktuell->get_data() << " -> ";
+                }
+
+                stack.pop();
+            }
+            if (aktuell->get_right_child() != nullptr && !check_knoten(folge, aktuell->get_right_child())) {
+                folge.push_back(aktuell->get_right_child());
+                stack.push(aktuell->get_right_child());
+            }
+
+            if (aktuell->get_left_child() != nullptr && !check_knoten(folge, aktuell->get_left_child())) {
+                folge.push_back(aktuell->get_left_child());
+                stack.push(aktuell->get_left_child());
+            }
+        }
     }
 
     void BinaryTree::print_levelorder() const {
